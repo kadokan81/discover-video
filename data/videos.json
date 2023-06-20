@@ -1,0 +1,344 @@
+{
+	"items": [
+		{
+			"kind": "youtube#searchResult",
+			"etag": "lLVx5Ev89q-TOyadtPyP14-cal8",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "ctlz0R1tSZE"
+			},
+			"snippet": {
+				"publishedAt": "2023-04-27T12:41:06Z",
+				"channelId": "UC_976xMxPgzIa290Hqtk-9g",
+				"title": "Disney&#39;s Wish | Official Teaser Trailer",
+				"description": "Check out the new trailer, plus a poster and new image for Walt Disney Animation Studios' “Wish,” which opens exclusively in ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/ctlz0R1tSZE/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/ctlz0R1tSZE/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/ctlz0R1tSZE/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Animation Studios",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-04-27T12:41:06Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "dRTRf_QWN3I4ky5Jr5MYNIm3izo",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "kpGo2_d3oYE"
+			},
+			"snippet": {
+				"publishedAt": "2023-03-13T00:59:01Z",
+				"channelId": "UCuaFvcY4MhZY3U43mMt1dYQ",
+				"title": "The Little Mermaid | Official Trailer",
+				"description": "Watch and you'll see, some day I'll be, part of your world! Watch the new trailer for #TheLittleMermaid and see the movie in ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/kpGo2_d3oYE/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/kpGo2_d3oYE/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/kpGo2_d3oYE/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Studios",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-03-13T00:59:01Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "LyV3mmf5Ey6loBayyWuH_a_J_cs",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "hXzcyx9V0xw"
+			},
+			"snippet": {
+				"publishedAt": "2023-03-28T12:44:23Z",
+				"channelId": "UC_IRYSp4auq7hKLvziWVH6w",
+				"title": "Elemental | Official Trailer",
+				"description": "This Summer, meet the residents of Element City Watch the new trailer for Disney and Pixar's #Elemental and see the movie in 3D ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/hXzcyx9V0xw/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/hXzcyx9V0xw/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/hXzcyx9V0xw/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Pixar",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-03-28T12:44:23Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "He0B5AY7MAnoqeg-kh42h54g4pw",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "AjLKTz81bj8"
+			},
+			"snippet": {
+				"publishedAt": "2023-05-16T12:32:52Z",
+				"channelId": "UCuaFvcY4MhZY3U43mMt1dYQ",
+				"title": "Haunted Mansion | Official Trailer",
+				"description": "Take the ride to the other side. Watch the brand-new trailer for Haunted Mansion, appearing only in theaters July 28. Directed by ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/AjLKTz81bj8/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/AjLKTz81bj8/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/AjLKTz81bj8/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Studios",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-05-16T12:32:52Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "_2cDp_kYuFzNfKsSOM4oxcR-qT8",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "p-5sVX7MRj8"
+			},
+			"snippet": {
+				"publishedAt": "2023-04-10T15:00:19Z",
+				"channelId": "UCuaFvcY4MhZY3U43mMt1dYQ",
+				"title": "Peter Pan &amp; Wendy | Official Trailer | Disney+",
+				"description": "Experience #PeterPanAndWendy, Disney's epic movie event, April 28 only on Disney+. ✨ “Peter Pan & Wendy,” a live-action ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/p-5sVX7MRj8/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/p-5sVX7MRj8/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/p-5sVX7MRj8/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Studios",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-04-10T15:00:19Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "eWv_bp7hOHUFvhm4PR3lgXpvU64",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "1VIZ89FEjYI"
+			},
+			"snippet": {
+				"publishedAt": "2021-01-26T14:00:00Z",
+				"channelId": "UC_976xMxPgzIa290Hqtk-9g",
+				"title": "Disney&#39;s Raya and the Last Dragon | Official Trailer",
+				"description": "On March 5, join Raya on her quest to find the last dragon. See Disney's Raya and the Last Dragon in theaters or order it on ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/1VIZ89FEjYI/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/1VIZ89FEjYI/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/1VIZ89FEjYI/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Animation Studios",
+				"liveBroadcastContent": "none",
+				"publishTime": "2021-01-26T14:00:00Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "QIi70ypVpSCCVy7Di-mDFbo0hgE",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "INfdIZAyi7U"
+			},
+			"snippet": {
+				"publishedAt": "2023-04-27T13:39:26Z",
+				"channelId": "UCi8e0iOVk1fEOogdfu4YgfA",
+				"title": "Wish Teaser Trailer (2023)",
+				"description": "Check out the official Wish teaser trailer starring Alan Tudyk and Ariana DeBose! ▻ Buy Tickets on Fandango: ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/INfdIZAyi7U/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/INfdIZAyi7U/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/INfdIZAyi7U/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Rotten Tomatoes Trailers",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-04-27T13:39:26Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "s0DEVu5oQsncvxSSnHBcNbuCQtc",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "WYpg9uE0RrA"
+			},
+			"snippet": {
+				"publishedAt": "2023-03-13T01:11:26Z",
+				"channelId": "UCzauGwJ4mP1ZR7oZxBSa8eA",
+				"title": "The Little Mermaid | Official Trailer",
+				"description": "Watch and you'll see, Some day I'll be, Part of your world! Watch the new trailer for #TheLittleMermaid and see the movie in ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/WYpg9uE0RrA/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/WYpg9uE0RrA/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/WYpg9uE0RrA/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Studios Canada",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-03-13T01:11:26Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "n5lVzyz8IlU4jOI-5bG1gJvb6UY",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "BydjQP2aFd0"
+			},
+			"snippet": {
+				"publishedAt": "2023-03-28T13:28:36Z",
+				"channelId": "UCP6nJ-Elnfnpjv6HQRsv1Cw",
+				"title": "Elementos | Trailer Oficial Dublado",
+				"description": "Quem quer conhecer os moradores da Cidade Elemento, levanta a mão!",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/BydjQP2aFd0/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/BydjQP2aFd0/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/BydjQP2aFd0/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "Walt Disney Studios BR",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-03-28T13:28:36Z"
+			}
+		},
+		{
+			"kind": "youtube#searchResult",
+			"etag": "0hrOTyy2t8OiiJVVr1R93PNBkDI",
+			"id": {
+				"kind": "youtube#video",
+				"videoId": "0Vv0qGz78pk"
+			},
+			"snippet": {
+				"publishedAt": "2023-05-29T17:13:56Z",
+				"channelId": "UCIrPm7Fo50CxzixqwRcVZTw",
+				"title": "Indiana Jones and the Dial of Destiny - Official Trailer (2023) | Disney | indiana jones 5 trailer",
+				"description": "Indiana Jones and the Dial of Destiny - Official Trailer (2023) | Disney | indiana jones 5 trailer Take a Look 'INDIANA JONES AND ...",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/0Vv0qGz78pk/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/0Vv0qGz78pk/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/0Vv0qGz78pk/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					}
+				},
+				"channelTitle": "RPS Marvel & Dc Entertainment",
+				"liveBroadcastContent": "none",
+				"publishTime": "2023-05-29T17:13:56Z"
+			}
+		}
+	]
+}
