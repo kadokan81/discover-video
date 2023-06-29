@@ -1,3 +1,5 @@
+import { JwtPayload } from 'jsonwebtoken';
+
 export interface RootResponse {
 	items: Item[];
 }
@@ -146,4 +148,22 @@ export interface Statistics {
 export interface PageInfo {
 	totalResults: number;
 	resultsPerPage: number;
+}
+
+export interface DecodedTokenTypes {
+	issuer: string;
+	publicAddress: string;
+	email: string;
+	oauthProvider: any;
+	phoneNumber: any;
+	wallets: any[];
+	iat: number;
+	exp: number;
+	'https://hasura.io/jwt/claims': HttpsHasuraIoJwtClaims;
+}
+
+export interface HttpsHasuraIoJwtClaims {
+	'x-hasura-default-role': string;
+	'x-hasura-allowed-roles': string[];
+	'x-hasura-user-id': string;
 }

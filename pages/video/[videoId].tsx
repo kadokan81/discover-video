@@ -1,19 +1,13 @@
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import styles from '../../styles/Video.module.css';
 import NavBar from '../../components/navbar/navbar';
 import clsx from 'classnames';
 import Like from '../../components/icons/like-icon';
 import DisLike from '../../components/icons/dislike-icon';
-import {
-	GetStaticPaths,
-	GetStaticPathsResult,
-	GetStaticProps,
-	GetStaticPropsContext,
-} from 'next';
-import { VideoTypes } from '../../components/card/section-cards';
+import { GetStaticPropsContext } from 'next';
 import { getVideosBiId } from '../../lib/videos';
 
 Modal.setAppElement('#__next');
@@ -43,9 +37,10 @@ type ParamsWithId = {
 	};
 };
 type ContextTypeWithVideoId = GetStaticPropsContext & ParamsWithId;
+
 export const getStaticProps = async (context: ContextTypeWithVideoId) => {
 	const searchId = context.params.videoId
-		? context.params?.videoId.toString()
+		? context.params?.videoId
 		: '4zH5iYM4wJo';
 
 	const video = await getVideosBiId(searchId);
@@ -87,41 +82,81 @@ export type VideoPageType = {
 	};
 };
 
+export type ApiVideoResponseType = {
+	favourited: Number;
+	id: Number;
+	userId: String;
+	videoId: String;
+	watched: boolean;
+};
+
+export type DataResponseType = {
+	statsDataArray: Array<ApiVideoResponseType>;
+};
+
 const Video = ({ video }: VideoPageType) => {
 	const router = useRouter();
 	const { videoId } = router.query as VideoPageQuery;
 	const [toggleLike, setToggleLike] = useState(false);
 	const [toggleDisLike, setToggleDisLike] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(() => true);
 
 	const srcString = `http://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&controls=0`;
 
-	const runRatingService = async () => {
-		// return await fetch("/api/stats", {
-		//   method: "POST",
-		//   body: JSON.stringify({
-		// 	videoId,
-		// 	favourited,
-		//   }),
-		//   headers: {
-		// 	"Content-Type": "application/json",
-		//   },
-		// });
+	useEffect(() => {
+		setIsModalOpen(true);
+		const getLastVideoFData = async () => {
+			const response = await fetch(`/api/stats?videoId=${videoId}`, {
+				method: 'GET',
+			});
+			const data = (await response.json()) as DataResponseType;
+
+			const { statsDataArray } = data;
+
+			if (statsDataArray.length > 0) {
+				const favourited = statsDataArray[0].favourited;
+				if (favourited === 1) {
+					setToggleLike(true);
+				} else if (favourited === 0) {
+					setToggleDisLike(true);
+				}
+			}
+		};
+
+		getLastVideoFData();
+		return () => {
+			setIsModalOpen(false);
+		};
+	}, []);
+
+	const runRatingService = async (favourited: number) => {
+		return await fetch('/api/stats', {
+			method: 'POST',
+			body: JSON.stringify({
+				videoId,
+				favourited,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 	};
 
 	const handleToggleDislike = async () => {
-		// setToggleDisLike(!toggleDisLike);
-		// setToggleLike(toggleDisLike);
-		// const val = !toggleDisLike;
-		// const favourited = val ? 0 : 1;
-		// const response = await runRatingService(favourited);
+		setToggleDisLike(!toggleDisLike);
+		setToggleLike(toggleDisLike);
+		const val = !toggleDisLike;
+		const favourited = val ? 0 : 1;
+		const response = await runRatingService(favourited);
 	};
 
 	const handleToggleLike = async () => {
-		// const val = !toggleLike;
-		// setToggleLike(val);
-		// setToggleDisLike(toggleLike);
-		// const favourited = val ? 1 : 0;
-		// const response = await runRatingService(favourited);
+		const val = !toggleLike;
+		setToggleLike(val);
+		setToggleDisLike(toggleLike);
+		const favourited = val ? 1 : 0;
+
+		const response = await runRatingService(favourited);
 	};
 
 	return (
@@ -129,18 +164,20 @@ const Video = ({ video }: VideoPageType) => {
 			<NavBar />
 
 			<Modal
-				isOpen={true}
+				isOpen={isModalOpen}
 				onRequestClose={() => router.push('/')}
 				contentLabel='video Modal'
 				style={customStyles}
-				className={styles.modal}>
+				className={styles.modal}
+			>
 				<iframe
 					className={styles.videoPlayer}
 					id='player'
 					typeof='text/html'
 					width='100%'
 					height='60%'
-					src={srcString}></iframe>
+					src={srcString}
+				></iframe>
 
 				<div className={styles.likeDislikeBtnWrapper}>
 					<div className={styles.likeBtnWrapper}>

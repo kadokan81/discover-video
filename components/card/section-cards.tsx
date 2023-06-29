@@ -31,9 +31,9 @@ const SectionCards: FC<SectionCardsTypes> = ({
 			<div className={clsx(styles.cardWrapper, shouldWrap && styles.wrap)}>
 				{videos.map((video, ind) => {
 					return (
-						<Link href={`/video/${video.id}`} key={video.id + ind}>
+						<Link href={`/video/${video.id}`} key={video.id + '' + ind}>
 							<Card
-								id={video.id.toString()}
+								id={video.id}
 								imgUrl={video.imgUrl}
 								size={size}
 								shouldScale={shouldScale}

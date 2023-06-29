@@ -40,7 +40,8 @@ const Card: FC<CardType> = ({
 		<div className={styles.container}>
 			<motion.div
 				className={cls(styles.imgMotionWrapper, classMap[size])}
-				{...shouldHover}>
+				{...shouldHover}
+			>
 				<Image
 					width={
 						size === 'small'

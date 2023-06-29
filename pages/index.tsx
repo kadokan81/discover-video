@@ -1,35 +1,69 @@
-import type { NextPage } from 'next';
+import type { GetServerSidePropsContext, NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from '../styles/Home.module.css';
 
 import Banner from '../components/banner/banner';
 import Navbar from '../components/navbar/navbar';
-import Card from '../components/card/card';
 import SectionCards, { VideoTypes } from '../components/card/section-cards';
-import { getVideos } from '../lib/videos';
+import { getVideos, getVideosBiId } from '../lib/videos';
 
-import { useEffect } from 'react';
+import { StatsHasuraDataArray, getWatchedVideos } from '../lib/hasura';
+
+import { verifyToken } from '../lib/utils';
 
 // ];
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+	const token = context.req.cookies.token || '';
+
+	const userId = verifyToken(token);
+
+	if (!userId) {
+		return {
+			props: {},
+			redirect: {
+				destination: '/login',
+				permanent: false,
+			},
+		};
+	}
 	const videosDisney = await getVideos('disney trailer');
 	const travelVideos = await getVideos('travel');
-	const reactVideos = await getVideos('react.js  ');
-	return { props: { videosDisney, travelVideos, reactVideos } };
+	const reactVideos = travelVideos;
+
+	const watchedVideosIds = await getWatchedVideos(userId, token);
+
+	const youTubeVideoFromWatched = (watchedVideosIds: StatsHasuraDataArray) => {
+		const promises = watchedVideosIds.map(async (v) => {
+			const res = await getVideosBiId(v.videoId);
+			return {
+				...res,
+			};
+		});
+		return Promise.all(promises);
+	};
+	const watchedVideoFromYouTube = await youTubeVideoFromWatched(
+		watchedVideosIds
+	);
+
+	return {
+		props: { videosDisney, travelVideos, reactVideos, watchedVideoFromYouTube },
+	};
 }
 
 type HomePageProps = {
 	videosDisney: VideoTypes[];
 	travelVideos: VideoTypes[];
 	reactVideos: VideoTypes[];
+	watchedVideoFromYouTube: VideoTypes[];
 };
 
 const Home: NextPage<HomePageProps> = ({
 	videosDisney,
 	travelVideos,
 	reactVideos,
+	watchedVideoFromYouTube,
 }) => {
 	return (
 		<div className={styles.container}>
@@ -46,28 +80,33 @@ const Home: NextPage<HomePageProps> = ({
 				imgUrl='/static/clifford.webp'
 				videoId='4zH5iYM4wJo'
 			/>
-
-			<SectionCards
-				videos={videosDisney}
-				title='Disney List'
-				size='large'
-				shouldScale={true}
-				shouldWrap={false}
-			/>
-			<SectionCards
-				videos={travelVideos}
-				title='Travel'
-				size='medium'
-				shouldScale={true}
-				shouldWrap={false}
-			/>
-			<SectionCards
-				videos={reactVideos}
-				title='Popular Videos'
-				size='small'
-				shouldScale={false}
-				shouldWrap={true}
-			/>
+			{watchedVideoFromYouTube && (
+				<SectionCards
+					videos={watchedVideoFromYouTube}
+					title='Watched videos'
+					size='large'
+					shouldScale={true}
+					shouldWrap={false}
+				/>
+			)}
+			{videosDisney && (
+				<SectionCards
+					videos={videosDisney}
+					title='Disney List'
+					size='large'
+					shouldScale={true}
+					shouldWrap={false}
+				/>
+			)}
+			{travelVideos && (
+				<SectionCards
+					videos={travelVideos}
+					title='Travel'
+					size='medium'
+					shouldScale={true}
+					shouldWrap={false}
+				/>
+			)}
 
 			<footer className={styles.footer}></footer>
 		</div>

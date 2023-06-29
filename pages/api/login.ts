@@ -6,7 +6,10 @@ import { createNewUser, isNewUser } from '../../lib/hasura';
 import { setTokenCookies } from '../../lib/cookies';
 import { MagicUserMetadata } from 'magic-sdk';
 
-type Data = {};
+type Data = {
+	done: boolean;
+	error?: string;
+};
 
 export default async function login(
 	req: NextApiRequest,
@@ -17,8 +20,10 @@ export default async function login(
 			const auth = req.headers.authorization;
 			const authToken = auth ? auth.substring(7) : '';
 
-			const userMetaDate: MagicUserMetadata =
-				await magicAdmin.users.getMetadataByToken(authToken);
+			const userMetaDate: MagicUserMetadata = await magicAdmin.users.getMetadataByToken(
+				authToken
+			);
+			console.log('🚀 ~ file: login.ts:26 ~ userMetaDate:', userMetaDate);
 
 			const token = jwt.sign(
 				{
@@ -38,13 +43,14 @@ export default async function login(
 			//check if user exists
 			//@ts-ignore
 			const isNewUserQuery = await isNewUser(token, userMetaDate.issuer);
+			console.log('🚀 ~ file: login.ts:46 ~ isNewUserQuery:', isNewUserQuery);
 
 			isNewUserQuery && (await createNewUser(token, userMetaDate));
 
 			setTokenCookies(token, res);
 			res.status(200).json({ done: true });
 		} catch (error) {
-			res.status(500).json({ error, done: false });
+			res.status(500).json({ error: 'new error', done: false });
 		}
 	} else {
 		res.send({ done: false });

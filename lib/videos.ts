@@ -8,7 +8,7 @@ export const getVideos = async (
 
 	try {
 		const response = await fetch(
-			`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=rating&q=${search}%20trailer&key=${GOOGLE_API_KEY}`
+			`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=rating&q=${search}%20trailer&key=${GOOGLE_API_KEY}`
 		);
 
 		const videoData: RootResponse = await response.json();
@@ -29,7 +29,7 @@ export const getVideos = async (
 // Authorization: Bearer [YOUR_ACCESS_TOKEN]
 // Accept: application/json
 
-export const getVideosBiId = async (id: string): Promise<VideoTypes | {}> => {
+export const getVideosBiId = async (id: String): Promise<VideoTypes | {}> => {
 	const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 	try {

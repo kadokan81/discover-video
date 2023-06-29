@@ -18,8 +18,9 @@ const NavBar: FC = () => {
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const data: MagicUserMetadata | undefined =
-					await magic?.user.getMetadata();
+				const data:
+					| MagicUserMetadata
+					| undefined = await magic?.user.getMetadata();
 
 				const didToken = await magic?.user.getIdToken();
 
@@ -75,6 +76,7 @@ const NavBar: FC = () => {
 		try {
 			await magic?.user.logout();
 			const isLogin = await magic?.user.isLoggedIn();
+
 			// console.log(await magic?.user.isLoggedIn()); // => `false`
 			if (!isLogin) {
 				setUsername('User Email');
@@ -117,10 +119,10 @@ const NavBar: FC = () => {
 
 				<ul className={styles.navItems}>
 					<li className={styles.navItem} onClick={handleOnClickHome}>
-						Home
+						<Link href={'/'}>Home</Link>
 					</li>
 					<li className={styles.navItem2} onClick={handleOnClickMyList}>
-						My List
+						<Link href={'/browse/my-list'}>My List</Link>
 					</li>
 				</ul>
 				<nav className={styles.navContainer}>

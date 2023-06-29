@@ -3,6 +3,16 @@ This is an example snippet - you should consider tailoring it
 to your service.
 */
 
+type StatsHasuraData = {
+	favourited: Number;
+	watched: Boolean;
+	videoId: String;
+	userId: String;
+	id: Number;
+};
+
+export type StatsHasuraDataArray = StatsHasuraData[];
+
 async function queryHasuraGQL(
 	operationsDoc: string,
 	operationName: string,
@@ -98,4 +108,153 @@ export async function createNewUser(token: string, metadata: any) {
 	);
 
 	return response;
+}
+
+export const findVideoIdByUser = async (
+	token: string,
+	userId: string,
+	videoId: string
+) => {
+	const operationsDoc = `
+	query fineVideoIdByUserId($userId: String!,$videoId: String!) {
+	  stats(where: {userId: {_eq:$userId }, videoId: {_eq: $videoId}}) {
+		favourited
+		id
+		userId
+		videoId
+		watched
+	  }
+	}
+  `;
+
+	const response = await queryHasuraGQL(
+		operationsDoc,
+		'fineVideoIdByUserId',
+		{
+			userId,
+			videoId,
+		},
+		token
+	);
+
+	return response?.data?.stats as [
+		{
+			favourited: number;
+			id: string;
+			userId: string;
+			videoId: string;
+			watched: boolean;
+		}
+	];
+};
+
+export type InsertStatsTypes = {
+	favourited: number;
+	userId: String;
+	watched: Boolean;
+	videoId: String;
+};
+
+export async function insertStats(
+	token: string,
+	{ ...props }: InsertStatsTypes
+) {
+	const operationsDoc = `
+	mutation insertStats($favourited: Int!, $userId: String!, $watched: Boolean!, $videoId: String!) {
+	  insert_stats_one(object: {
+		favourited: $favourited, 
+		userId: $userId, 
+		watched: $watched, 
+		videoId: $videoId
+	  }) {
+		  favourited
+		  userId
+	  }
+	}
+  `;
+
+	return await queryHasuraGQL(
+		operationsDoc,
+		'insertStats',
+		{ ...props },
+		token
+	);
+}
+
+export async function updateStats(
+	token: string,
+	{ favourited, userId, watched, videoId }: InsertStatsTypes
+) {
+	const operationsDoc = `
+  mutation updateStats($favourited: Int!, $userId: String!, $watched: Boolean!, $videoId: String!) {
+	update_stats(
+	  _set: {watched: $watched, favourited: $favourited}, 
+	  where: {
+		userId: {_eq: $userId}, 
+		videoId: {_eq: $videoId}
+	  }) {
+	  returning {
+		favourited,
+		userId,
+		watched,
+		videoId
+	  }
+	}
+  }
+  `;
+
+	return await queryHasuraGQL(
+		operationsDoc,
+		'updateStats',
+		{ favourited, userId, watched, videoId },
+		token
+	);
+}
+
+export async function getMyListVideos(userId: string, token: string) {
+	const operationsDoc = `
+	query favouritedVideos($userId: String!) {
+	  stats(where: {
+		userId: {_eq: $userId}, 
+		favourited: {_eq: 1}
+	  }) {
+		videoId
+	  }
+	}
+  `;
+
+	const response = await queryHasuraGQL(
+		operationsDoc,
+		'favouritedVideos',
+		{
+			userId,
+		},
+		token
+	);
+
+	return response?.data?.stats as StatsHasuraDataArray;
+}
+
+export async function getWatchedVideos(userId: string, token: string) {
+	const operationsDoc = `
+	query watchedVideos($userId: String!) {
+	  stats(where: {
+		watched: {_eq: true}, 
+		userId: {_eq: $userId},
+	  }) {
+		videoId
+	  }
+	}
+  `;
+
+	const response = await queryHasuraGQL(
+		operationsDoc,
+		'watchedVideos',
+		{
+			userId,
+		},
+		token
+	);
+
+	return response?.data?.stats as StatsHasuraDataArray;
 }

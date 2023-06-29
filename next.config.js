@@ -14,6 +14,10 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
+				hostname: 'i.ytimg.com/vi',
+			},
+			{
+				protocol: 'https',
 				hostname: 'yt3.ggpht.com',
 			},
 		],

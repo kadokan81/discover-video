@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				router.push('/login');
 			}
 		};
-		// isLoginCheck();
+		isLoginCheck();
 	}, []);
 	return (
 		<main className={roboto_slab.className}>
