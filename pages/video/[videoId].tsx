@@ -127,7 +127,7 @@ const Video = ({ video }: VideoPageType) => {
 		return () => {
 			setIsModalOpen(false);
 		};
-	}, []);
+	}, [videoId]);
 
 	const runRatingService = async (favourited: number) => {
 		return await fetch('/api/stats', {

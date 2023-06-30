@@ -10,7 +10,7 @@ import styles from '../../styles/MyList.module.css';
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const token = context.req.cookies.token || '';
 
-	const userId = verifyToken(token);
+	const userId = (await verifyToken(token)) as string;
 
 	if (!userId) {
 		return {

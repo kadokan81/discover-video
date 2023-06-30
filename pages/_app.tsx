@@ -32,7 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, []);
 	return (
 		<main className={roboto_slab.className}>
-			{isLoading ? <Loading /> : <Component {...pageProps} />}
+			<Component {...pageProps} />
+			{/* {isLoading ? <Loading /> : <Component {...pageProps} />} */}
 		</main>
 	);
 }

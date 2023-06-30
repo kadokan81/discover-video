@@ -39,6 +39,7 @@ const Login = () => {
 			try {
 				setIsLoading(true);
 				const didToken = await magic?.auth.loginWithMagicLink({ email });
+				console.log('🚀 ~ file: login.tsx:42 ~ Login ~ didToken:', didToken);
 
 				if (didToken) {
 					const response = await fetch('/api/login', {
@@ -50,6 +51,10 @@ const Login = () => {
 					});
 
 					const loginInResponse = await response.json();
+					console.log(
+						'🚀 ~ file: login.tsx:54 ~ Login ~ loginInResponse:',
+						loginInResponse
+					);
 
 					if (loginInResponse.done) {
 						setIsLoading(false);

@@ -17,31 +17,38 @@ import { verifyToken } from '../lib/utils';
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const token = context.req.cookies.token || '';
 
-	const userId = verifyToken(token);
+	const userId = (await verifyToken(token)) as string;
 
-	if (!userId) {
-		return {
-			props: {},
-			redirect: {
-				destination: '/login',
-				permanent: false,
-			},
-		};
-	}
+	// if (!userId) {
+	// 	return {
+	// 		props: {},
+	// 		redirect: {
+	// 			destination: '/login',
+	// 			permanent: false,
+	// 		},
+	// 	};
+	// }
 	const videosDisney = await getVideos('disney trailer');
 	const travelVideos = await getVideos('travel');
-	const reactVideos = travelVideos;
+	const reactVideos = await getVideos('react.js  ');
 
 	const watchedVideosIds = await getWatchedVideos(userId, token);
 
 	const youTubeVideoFromWatched = (watchedVideosIds: StatsHasuraDataArray) => {
-		const promises = watchedVideosIds.map(async (v) => {
-			const res = await getVideosBiId(v.videoId);
-			return {
-				...res,
-			};
-		});
-		return Promise.all(promises);
+		try {
+			const promises = watchedVideosIds.map(async (v) => {
+				const res = await getVideosBiId(v.videoId);
+				return {
+					...res,
+				};
+			});
+			return Promise.all(promises);
+		} catch (error) {
+			console.log(
+				'🚀 ~ file: index.tsx:48 ~ youTubeVideoFromWatched ~ error:',
+				error
+			);
+		}
 	};
 	const watchedVideoFromYouTube = await youTubeVideoFromWatched(
 		watchedVideosIds
@@ -83,7 +90,7 @@ const Home: NextPage<HomePageProps> = ({
 			{watchedVideoFromYouTube && (
 				<SectionCards
 					videos={watchedVideoFromYouTube}
-					title='Watched videos'
+					title='Watch videos'
 					size='large'
 					shouldScale={true}
 					shouldWrap={false}
