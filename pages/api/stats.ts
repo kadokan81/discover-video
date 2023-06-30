@@ -33,7 +33,7 @@ export default async function stats(
 					msg: 'no cookies',
 				});
 			} else {
-				const issuer = verifyToken(token);
+				const issuer = (await verifyToken(token)) as string;
 
 				const body = req.body;
 
